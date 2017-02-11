@@ -11,7 +11,7 @@ class Ghg < Formula
     ENV["GOPATH"] = buildpath
     (buildpath/"src/github.com/Songmu/ghg").install buildpath.children
     cd "src/github.com/Songmu/ghg" do
-      system "go", "build", "-o", bin/"ghg", "cmd/ghg/ghg.go"
+      system "go", "build", "-o", bin/"ghg", "cmd/ghg/main.go"
       prefix.install_metafiles
     end
   end

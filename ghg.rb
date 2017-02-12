@@ -3,7 +3,7 @@ class Ghg < Formula
   homepage "https://github.com/Songmu/ghg"
   url "https://github.com/Songmu/ghg/archive/v0.0.3.tar.gz"
   sha256 "19606c6d24d4fb2621fc6cae8f9c8f336b7de318ace984a8da37beff732c91d5"
-  head "https://github.com/Songmu/ghg"
+  head "https://github.com/Songmu/ghg.git"
 
   depends_on "go" => :build
 

@@ -1,23 +1,18 @@
 class Ghg < Formula
   desc "Get the executable from github releases"
   homepage "https://github.com/Songmu/ghg"
-  url "https://github.com/Songmu/ghg/archive/v0.0.3.tar.gz"
-  sha256 "19606c6d24d4fb2621fc6cae8f9c8f336b7de318ace984a8da37beff732c91d5"
+  url "https://github.com/Songmu/ghg/archive/v0.1.4.tar.gz"
+  sha256 "1839f9f945a07f682c7db33896c32a30a8d0e303167795a0b16a4783c6194ff2"
   head "https://github.com/Songmu/ghg.git"
 
   depends_on "go" => :build
+  depends_on "dep" => :build
 
   def install
     ENV["GOPATH"] = buildpath
     (buildpath/"src/github.com/Songmu/ghg").install buildpath.children
     cd "src/github.com/Songmu/ghg" do
-      system "go", "get", "github.com/jessevdk/go-flags"
-      system "go", "get", "github.com/mholt/archiver"
-      system "go", "get", "github.com/mitchellh/go-homedir"
-      system "go", "get", "github.com/mitchellh/ioprogress"
-      system "go", "get", "github.com/octokit/go-octokit/octokit"
-      system "go", "get", "github.com/pkg/errors"
-      system "go", "get", "github.com/tcnksm/go-gitconfig"
+      system "dep", "ensure"
       system "go", "build", "-o", bin/"ghg", "cmd/ghg/main.go"
       prefix.install_metafiles
     end
